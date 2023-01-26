@@ -6,5 +6,7 @@ output:
 
 sections:
   show:
+    - providers
+    - modules
     - inputs
     - outputs
