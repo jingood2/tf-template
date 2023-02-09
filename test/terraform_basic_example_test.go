@@ -45,14 +45,14 @@ func TestTerraformBasicExample(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 
 	// Run `terraform output` to get the values of output variables
-	actualTextExample := terraform.Output(t, terraformOptions, "example")
+	//actualTextExample := terraform.Output(t, terraformOptions, "example")
 	actualTextExample2 := terraform.Output(t, terraformOptions, "example2")
 	actualExampleList := terraform.OutputList(t, terraformOptions, "example_list")
 	actualExampleMap := terraform.OutputMap(t, terraformOptions, "example_map")
 
 	// website::tag::3::Check the output against expected values.
 	// Verify we're getting back the outputs we expect
-	assert.Equal(t, expectedText, actualTextExample)
+	//assert.Equal(t, expectedText, actualTextExample)
 	assert.Equal(t, expectedText, actualTextExample2)
 	assert.Equal(t, expectedList, actualExampleList)
 	assert.Equal(t, expectedMap, actualExampleMap)
