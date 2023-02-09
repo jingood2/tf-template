@@ -26,7 +26,7 @@ jobs:
       - name: Download Go Modules
         working-directory: test
       #  run: go mod download
-        run: go mod init ${localWorkspaceFolderBasename} || true
+        run: go mod init .
       - name: Run Go Tests
         working-directory: test
       #  run: go test -v -tags=unit
