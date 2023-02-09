@@ -23,3 +23,9 @@ repos:
       language: system
       pass_filenames: false
       always_run: true
+    - id: terraform-docs-examples
+      name: terraform-docs-examples
+      entry: "terraform-docs examples"
+      language: system
+      pass_filenames: false
+      always_run: true
