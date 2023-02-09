@@ -25,7 +25,7 @@ variable "example" {
 variable "example2" {
   description = "Example variable 2"
   type        = string
-  default     = "test"
+  default     = ""
 }
 
 variable "example_list" {
