@@ -23,18 +23,18 @@ jobs:
       #- uses: autero1/action-terraform@v0.1.0
       #  with:
       #    terraform_version: 0.12.21
-      - name: Download Go Modules
-        working-directory: test
+      #- name: Download Go Modules
+      #  working-directory: test
       #  run: go mod download
-        run: go mod init ${localWorkspaceFolderBasename}
-      - name: Run Go Tests
-        working-directory: test
+      #  run: go mod init ${localWorkspaceFolderBasename}
+      #- name: Run Go Tests
+      #  working-directory: test
       #  run: go test -v -tags=unit
-        run: go mod tidy
+      #  run: go mod tidy
 
 
       # Run your build and test scripts here.
-      #- name: Run Terratest
-      #  uses: cloudposse/github-action-terratest@main
-      #  with:
-      #    sourceDir: test
+      - name: Run Terratest
+        uses: cloudposse/github-action-terratest@main
+        with:
+          sourceDir: test
