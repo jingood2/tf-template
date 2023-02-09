@@ -14,8 +14,21 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      # Run your build and test scripts here.
-      - name: Run Terratest
-        uses: cloudposse/github-action-terratest@main
+      - uses: actions/setup-go@v1
         with:
-          sourceDir: test
+          go-version: 1.18.3
+      - uses: autero1/action-terraform@v0.1.0
+        with:
+          terraform_version: 0.13.7
+      - name: Download Go Modules
+        working-directory: test
+        run: go mod download
+      - name: Run Go Tests
+        working-directory: test
+        run: go test -v -tags=unit
+
+      # Run your build and test scripts here.
+      #- name: Run Terratest
+      #  uses: cloudposse/github-action-terratest@main
+      #  with:
+      #    sourceDir: test
