@@ -27,14 +27,10 @@ jobs:
         working-directory: test
         run: go mod init test
       #  run: go mod init ${localWorkspaceFolderBasename}
-      - name: Run Go Tests
+      - name: go mod tidy
         working-directory: test
       #  run: go test -v -tags=unit
         run: go mod tidy
-
-
-      # Run your build and test scripts here.
-      - name: Run Terratest
-        uses: cloudposse/github-action-terratest@main
-        with:
-          sourceDir: test
+      - name: Run Go Tests
+        working-directory: test
+        run: go test -v -tags=unit
