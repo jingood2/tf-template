@@ -1,4 +1,4 @@
-name: test
+name: Unit Test
 
 on:
   push:
@@ -6,9 +6,9 @@ on:
       - 'feature/*'
 
 jobs:
-  pre_commit:
+  unit-tests:
     runs-on: ubuntu-latest
-    name: Pre-commit
+    name: Run Go Unit Test with TerraTest
 
     steps:
       - name: Checkout Code
@@ -19,7 +19,7 @@ jobs:
           go-version: 1.18.3
       - uses: autero1/action-terraform@v0.1.0
         with:
-          terraform_version: 0.13.7
+          terraform_version: 0.12.21
       - name: Download Go Modules
         working-directory: test
         run: go mod download
