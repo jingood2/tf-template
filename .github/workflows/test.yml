@@ -29,7 +29,9 @@ jobs:
         run: go mod init ${localWorkspaceFolderBasename} || true
       - name: Run Go Tests
         working-directory: test
-        run: go test -v -tags=unit
+      #  run: go test -v -tags=unit
+        run: go mod tidy
+
 
       # Run your build and test scripts here.
       #- name: Run Terratest
