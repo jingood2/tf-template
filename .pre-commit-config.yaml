@@ -14,7 +14,6 @@ repos:
     - id: terraform_checkov
     - id: terraform_tflint
     - id: terraform_tfsec
-#    - id: terraform_docs
 
 - repo: local
   hooks:
