@@ -8,7 +8,7 @@ on:
 permissions: read-all
 
 jobs:
-  release:
+  update_release_draft:
     name: Create Release
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged && github.base_ref == 'main'
@@ -19,5 +19,6 @@ jobs:
         with:
           publish: true
           commitish: main
+          config-name: release-drafter-config.yml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
