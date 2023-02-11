@@ -18,23 +18,23 @@
 !-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <!-- <a href="https://github.com/DontShaveTheYak/terraform-module-template">
+  <!-- <a href="https://github.com/jingood2/terraform-template">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a> -->
 
-  <h3 align="center">Terraform module template</h3>
+  <h3 align="center">Terraform template with pre-commit and unit test</h3>
 
   <p align="center">
     Create a Terraform module with CICD already setup.
     <!-- <br />
-    <a href="https://github.com/DontShaveTheYak/terraform-module-template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/jingood2/terraform-template"><strong>Explore the docs »</strong></a>
     <br /> -->
     <br />
-    <!-- <a href="https://github.com/DontShaveTheYak/terraform-module-template">View Demo</a>
+    <!-- <a href="https://github.com/jingood2/terraform-template">View Demo</a>
     · -->
-    <a href="https://github.com/DontShaveTheYak/terraform-module-template/issues">Report Bug</a>
+    <a href="https://github.com/jingood2/terraform-template/issues">Report Bug</a>
     ·
-    <a href="https://github.com/DontShaveTheYak/terraform-module-template/issues">Request Feature</a>
+    <a href="https://github.com/jingood2/terraform-template/issues">Request Feature</a>
     ·
     <!-- <a href="https://la-tech.co/post/hypermodern-cloudformation/getting-started/">Guide</a> -->
   </p>
