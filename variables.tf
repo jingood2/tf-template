@@ -1,14 +1,11 @@
-variable "ami" {
+# Main Input Variables
+
+variable "password" {
   type        = string
-  description = "Ubuntu AMI ID"
+  description = "My secret password don't hack me plz"
 }
 
-variable "instance_type" {
+variable "greetings" {
   type        = string
-  description = "Instance type"
-}
-
-variable "name_tag" {
-  type        = string
-  description = "Name of the EC2 instance"
+  description = "greeting message"
 }
