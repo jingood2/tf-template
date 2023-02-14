@@ -31,7 +31,6 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ${{ inputs.path }}
     env:
       TF_KEY: ${{ inputs.gh_environment }}
 
