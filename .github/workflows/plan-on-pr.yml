@@ -85,6 +85,6 @@ jobs:
         message: |
           ## ${{ matrix.path }} plan
           ```
-          $(chat plan.txt)
+          ${{ secrets.GITHUB_TOKEN }}
           ${{ env.PLAN }}
           ```
