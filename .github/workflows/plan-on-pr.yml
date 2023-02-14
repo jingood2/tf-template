@@ -86,5 +86,6 @@ jobs:
           ## ${{ matrix.path }} plan
           ```
           ${{ secrets.GITHUB_TOKEN }}
+          ${{ secrets.GITHUB_TOKEN }}
           ${{ env.PLAN }}
           ```
