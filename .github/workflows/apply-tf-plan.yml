@@ -31,7 +31,6 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ${{ inputs.path }}
     env:
       TF_KEY: ${{ inputs.gh_environment }}
 
@@ -39,12 +38,12 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@v2
         with:
-          name: ${{ env.TF_KEY }}.tfplan
+          name: ${{ env.TF_KEY }}
           #path: ${{ inputs.path }}
-          #path: tfplan/${{ inputs.gh_environment }}.zip
 
       - name: Decompress TF Plan artifact
-        run: unzip tfplan/${{ inputs.gh_environment }}.zip
+        run: unzip tfplan.zip
+        #unzip tfplan/${{ inputs.gh_environment }}.zip
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1.3.2
