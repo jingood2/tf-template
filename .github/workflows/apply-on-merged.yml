@@ -18,7 +18,7 @@ jobs:
       gh_environment: stage
   
   apply-prod-plan:
-    needs: apply-prod-plan
+    needs: apply-stage-plan
     uses: jingood2/tf-template/.github/workflows/apply-tf-plan.yml@main
     with:
       path: tfplan
