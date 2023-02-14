@@ -17,16 +17,16 @@ jobs:
       
       - name: Terraform Format
         id: fmt
-        run: terraform fmt --check -recursive
+        run: terraform fmt -check -recursive
         continue-on-error: true
       
-      - name: Post Format
-        if: always() && github.ref != 'refs/heads/main' && (steps.fmt.outcome == 'success' || steps.fmt.outcome == 'failure')
-        uses: robburger/terraform-pr-commenter@v1
-        with:
-          commenter_type: fmt
-          commenter_input: ${{ format('{0}{1}', steps.fmt.outputs.stdout, steps.fmt.outputs.stderr) }}
-          commenter_exitcode: ${{ steps.fmt.outputs.exitcode }}
+      #- name: Post Format
+      #  if: always() && github.ref != 'refs/heads/main' && (steps.fmt.outcome == 'success' || steps.fmt.outcome == 'failure')
+      #  uses: robburger/terraform-pr-commenter@v1
+      #  with:
+      #    commenter_type: fmt
+      #    commenter_input: ${{ format('{0}{1}', steps.fmt.outputs.stdout, steps.fmt.outputs.stderr) }}
+      #    commenter_exitcode: ${{ steps.fmt.outputs.exitcode }}
 
       - name: Scan IaC - tfsec
         #if: ${{ inputs.ENABLE_TFSEC == 'true' }}
