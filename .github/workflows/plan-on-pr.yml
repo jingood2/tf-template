@@ -125,12 +125,15 @@ jobs:
         retention-days: 5
     
   apply-dev-plan:
-    uses: jingood2/tf-template/.github/workflows/apply-tf-plan.yml@main
+    name: terraform-scan 
     needs: terraform-plan
-    with:
-      path: tfplan
-      gh_environment: dev
+    runs-on: ubuntu-latest
+    #uses: jingood2/tf-template/.github/workflows/apply-tf-plan.yml@main
+    #with:
+    #  path: tfplan
+    #  gh_environment: dev
   
+    steps:
     - name: Download Artifact
       uses: actions/download-artifact@v2
       with:
