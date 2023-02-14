@@ -43,7 +43,7 @@ jobs:
           #path: ${{ inputs.path }}
 
       - name: Decompress TF Plan artifact
-        run: unzip tfplan.zip
+        run: unzip ${{ env.TF_KEY}}/tfplan.zip
         #unzip tfplan/${{ inputs.gh_environment }}.zip
 
       - name: Setup Terraform
