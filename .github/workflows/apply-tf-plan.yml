@@ -38,11 +38,11 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@v2
         with:
-          name: dev
+          name: ${{ env.TF_KEY }}
           #path: ${{ inputs.path }}
 
       - name: Decompress TF Plan artifact
-        run: unzip ${{ env.TF_KEY}}/tfplan.zip
+        run: unzip tfplan.zip
         #unzip tfplan/${{ inputs.gh_environment }}.zip
 
       - name: Setup Terraform
