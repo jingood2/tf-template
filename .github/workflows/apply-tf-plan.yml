@@ -38,7 +38,7 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@v2
         with:
-          name: env
+          name: dev
           #path: ${{ inputs.path }}
 
       - name: Decompress TF Plan artifact
