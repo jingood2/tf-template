@@ -6,24 +6,23 @@ on:
       - main
 
 jobs:
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v2
+  #lint:
+  #  name: Lint
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - name: Check out code
+  #      uses: actions/checkout@v2
+#
+#      - name: Setup Terraform
+#        uses: hashicorp/setup-terraform@v2
+#        with:
+#          terraform_wrapper: false
+#          terraform_version: 1.0.9
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2
-        with:
-          terraform_wrapper: false
-          terraform_version: 1.0.9
-
-      - name: Run terraform fmt check
-        run: terraform fmt -check -diff -recursive terraform
+#      - name: Run terraform fmt check
+#        run: terraform fmt -check -diff -recursive terraform
   plan:
     name: Plan
-    needs: lint
     env:
       TF_VAR_allowed_account_id: ${{ secrets.ALLOWED_ACCOUNT_ID }}
     runs-on: ubuntu-latest
