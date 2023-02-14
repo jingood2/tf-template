@@ -1,0 +1,27 @@
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  apply-dev-plan:
+    uses: jingood2/tf-template/.github/workflows/apply-tf-plan.yml
+    with:
+      path: tfplan
+      gh_environment: dev
+  
+  apply-stage-plan:
+    needs: apply-dev-plan
+    uses: jingood2/tf-template/.github/workflows/apply-tf-plan.yml
+    with:
+      path: tfplan
+      gh_environment: stage
+  
+  apply-prod-plan:
+    needs: apply-prod-plan
+    uses: jingood2/tf-template/.github/workflows/apply-tf-plan.yml
+    with:
+      path: tfplan
+      gh_environment: prod
+
+  
