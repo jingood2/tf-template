@@ -122,3 +122,9 @@ jobs:
         name: '${{ matrix.path }}.tfplan'
         path: 'tfplan/${{ matrix.path }}.zip'
         retention-days: 5
+    
+  apply-dev-plan:
+    uses: jingood2/tf-template/.github/workflows/apply-tf-plan.yml@main
+    with:
+      path: tfplan
+      gh_environment: dev
