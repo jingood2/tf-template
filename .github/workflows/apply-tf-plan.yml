@@ -41,7 +41,7 @@ jobs:
         with:
           name: ${{ env.TF_KEY }}.tfplan
           #path: ${{ inputs.path }}
-          #path: tfplan/${{ inputs.gh_environment }}.zip
+          path: tfplan/${{ inputs.gh_environment }}.zip
 
       - name: Decompress TF Plan artifact
         run: unzip tfplan/${{ inputs.gh_environment }}.zip
