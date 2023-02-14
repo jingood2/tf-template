@@ -31,9 +31,9 @@ jobs:
       matrix:
         path:
           - dev
-    
+
     permissions: write-all
-    
+
     steps:
     - name: Check out code
       uses: actions/checkout@v2
@@ -43,31 +43,31 @@ jobs:
       with:
         terraform_wrapper: false
         terraform_version: 1.0.9
-    
+
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
         aws-region: us-east-1
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    
+
     - name: Initialize Terraform
       run: |
         cd terraform/${{ matrix.path }}
-        terraform init -input=false   
-    
+        terraform init -input=false
+
     - name: Plan Terraform
       id: plan
       continue-on-error: true
       run: |
         cd terraform/${{ matrix.path }}
         terraform plan -input=false -no-color -out=tfplan \
-        && terraform show -no-color tfplan          
+        && terraform show -no-color tfplan
 
     - name: Reformat Plan
       run: |
         echo '${{ steps.plan.outputs.stdout || steps.plan.outputs.stderr }}' \
-        | sed -E 's/^([[:space:]]+)([-+])/\2\1/g' > plan.txt          
+        | sed -E 's/^([[:space:]]+)([-+])/\2\1/g' > plan.txt
 
     - name: Put Plan in Env Var
       run: |
@@ -75,7 +75,7 @@ jobs:
         echo "$PLAN"
         echo "PLAN<<EOF" >> $GITHUB_ENV
         echo "$PLAN" >> $GITHUB_ENV
-        echo "EOF" >> $GITHUB_ENV          
+        echo "EOF" >> $GITHUB_ENV
 
     - name: Post Plan to GitHub PR
       uses: mshick/add-pr-comment@v1
@@ -88,6 +88,3 @@ jobs:
           ```diff
           ${{ env.PLAN }}
           ```
-    
-    
-

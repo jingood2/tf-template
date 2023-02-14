@@ -1,6 +1,6 @@
-aws_region = "ap-northeast-2"
+aws_region  = "ap-northeast-2"
 environment = "env"
-division = "jingood2"
+division    = "jingood2"
 
-password =  "test"
+password  = "test"
 greetings = "hello world"
