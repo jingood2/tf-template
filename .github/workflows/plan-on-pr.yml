@@ -72,11 +72,13 @@ jobs:
       run: exit 1
 
     - name: Compress TF Plan artifact
-      run: zip -r ${{ matrix.path }}.zip ./*
+      run: |
+        mkdir -p  tfplan
+        zip -r tfplan/${{ matrix.path }}.zip ./*
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
-        name: '${{ inputs.tf_key }}'
-        path: '${{ inputs.path }}/${{ inputs.tf_key }}.zip'
+        name: '${{ matrix.path }}.tfplan'
+        path: 'tfplan/${{ matrix.path }}.zip'
         retention-days: 5
