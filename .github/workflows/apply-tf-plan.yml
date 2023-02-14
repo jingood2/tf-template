@@ -55,4 +55,4 @@ jobs:
         run: terraform init --backend-config="key=$TF_KEY"
 
       - name: Terraform Apply
-        run: terraform apply plan.tfplan
+        run: terraform apply -auto-approve
