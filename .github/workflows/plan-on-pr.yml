@@ -122,9 +122,23 @@ jobs:
         #path: '${{ matrix.path }}.zip'
         path: 'tfplan.zip'
         retention-days: 5
-    
+
+  download-artifact:
+    needs: terraform-plan  
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Download Artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: dev
+        #path: ${{ inputs.path }}
+
+    - name: Decompress TF Plan artifact
+      run: unzip tfplan.zip
+
   apply-dev-plan:
-    needs: terraform-plan
+    needs: download-artifact
     uses: jingood2/tf-template/.github/workflows/apply-tf-plan.yml@main
     with:
       path: tfplan
