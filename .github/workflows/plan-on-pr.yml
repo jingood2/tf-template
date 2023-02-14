@@ -58,16 +58,15 @@ jobs:
 
     - name: Plan Terraform
       id: plan
-        #terraform plan -input=false -no-color -out=tfplan \
-        #&& terraform show -no-color tfplan
       continue-on-error: true
       run: |
         cd terraform/${{ matrix.path }}
-        terraform plan -input=false -no-color
+        terraform plan -input=false -no-color -out=tfplan \
+        && terraform show -no-color tfplan
 
     - name: Reformat Plan
       run: |
-        echo '${{ steps.plan.outputs.stdout || steps.plan.outputs.stderr }}' | sed -E 's/^([[:space:]]+)([-+])/\2\1/g' > plan.txt
+        echo "${{ steps.plan.outputs.stdout || steps.plan.outputs.stderr }}" | sed -E 's/^([[:space:]]+)([-+])/\2\1/g' > plan.txt
         PLAN=$(cat plan.txt)
         echo "PLAN<<EOF" >> $GITHUB_ENV
         echo "$PLAN" >> $GITHUB_ENV
