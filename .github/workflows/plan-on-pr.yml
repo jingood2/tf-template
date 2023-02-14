@@ -58,11 +58,12 @@ jobs:
 
     - name: Plan Terraform
       id: plan
+        #terraform plan -input=false -no-color -out=tfplan \
+        #&& terraform show -no-color tfplan
       continue-on-error: true
       run: |
         cd terraform/${{ matrix.path }}
-        terraform plan -input=false -no-color -out=tfplan \
-        && terraform show -no-color tfplan
+        terraform plan -input=false -no-color
 
     - name: Reformat Plan
       run: |
