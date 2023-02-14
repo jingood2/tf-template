@@ -72,7 +72,6 @@ jobs:
     - name: Put Plan in Env Var
       run: |
         PLAN=$(cat plan.txt)
-        echo "$PLAN"
         echo "PLAN<<EOF" >> $GITHUB_ENV
         echo "$PLAN" >> $GITHUB_ENV
         echo "EOF" >> $GITHUB_ENV
@@ -86,5 +85,6 @@ jobs:
         message: |
           ## ${{ matrix.path }} plan
           ```
+          $(chat plan.txt)
           ${{ env.PLAN }}
           ```
