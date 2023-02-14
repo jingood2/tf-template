@@ -64,14 +64,14 @@ jobs:
         terraform plan -input=false -no-color -out=tfplan \
         && terraform show -no-color tfplan
 
-    - name: Reformat Plan
+    #- name: Reformat Plan
       #| sed -E 's/^([[:space:]]+)([-+])/\2\1/g' > plan.txt
-      run: |
-        echo '${{ steps.plan.outputs.stdout || steps.plan.outputs.stderr }}' > plan.txt
+    #  run: |
+    #    echo '${{ steps.plan.outputs.stdout || steps.plan.outputs.stderr }}' > plan.txt
 
     - name: Put Plan in Env Var
       run: |
-        PLAN=$(cat plan.txt)
+        PLAN= echo '${{ steps.plan.outputs.stdout || steps.plan.outputs.stderr }}'
         echo "PLAN<<EOF" >> $GITHUB_ENV
         echo "$PLAN" >> $GITHUB_ENV
         echo "EOF" >> $GITHUB_ENV
@@ -85,7 +85,5 @@ jobs:
         message: |
           ## ${{ matrix.path }} plan
           ```
-          ${{ secrets.GITHUB_TOKEN }}
-          ${{ secrets.GITHUB_TOKEN }}
           ${{ env.PLAN }}
           ```
