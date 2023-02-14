@@ -3,7 +3,7 @@ module "helloworld" {
   version = "2020.4.21"
 
   # insert the 1 required variable here
-  password  = "${local.name}"
+  password  = local.name
   greetings = "hello world"
 
 
