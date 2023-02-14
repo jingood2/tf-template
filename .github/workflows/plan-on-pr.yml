@@ -65,9 +65,9 @@ jobs:
         && terraform show -no-color tfplan
 
     - name: Reformat Plan
+      #| sed -E 's/^([[:space:]]+)([-+])/\2\1/g' > plan.txt
       run: |
-        echo '${{ steps.plan.outputs.stdout || steps.plan.outputs.stderr }}' \
-        | sed -E 's/^([[:space:]]+)([-+])/\2\1/g' > plan.txt
+        echo '${{ steps.plan.outputs.stdout || steps.plan.outputs.stderr }}' > plan.txt
 
     - name: Put Plan in Env Var
       run: |
