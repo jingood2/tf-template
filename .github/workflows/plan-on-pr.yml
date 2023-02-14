@@ -119,8 +119,9 @@ jobs:
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
-        name: '${{ matrix.path }}.tfplan'
-        path: 'tfplan/${{ matrix.path }}.zip'
+        name: '${{ matrix.path }}'
+        #path: '${{ matrix.path }}.zip'
+        path: 'tfplan.zip'
         retention-days: 5
     
   apply-dev-plan:
