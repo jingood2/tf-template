@@ -23,6 +23,7 @@ jobs:
         run: terraform fmt -check -diff -recursive ./terraform
   plan:
     name: Plan
+    needs: lint
     env:
       TF_VAR_allowed_account_id: ${{ secrets.ALLOWED_ACCOUNT_ID }}
     runs-on: ubuntu-latest
@@ -39,6 +40,7 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
       with:
+        terraform_wrapper: false
         terraform_version: 1.0.9
     
     - name: Configure AWS Credentials
