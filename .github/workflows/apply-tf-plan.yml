@@ -43,7 +43,9 @@ jobs:
           #path: ${{ inputs.path }}
 
       - name: Decompress TF Plan artifact
-        run: unzip ${{ inputs.gh_environment }}.zip
+        run: | 
+          ls -al
+          unzip tfplan/${{ inputs.gh_environment }}.zip
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1.3.2
