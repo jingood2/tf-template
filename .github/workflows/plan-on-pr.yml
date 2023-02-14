@@ -113,8 +113,7 @@ jobs:
 
     - name: Compress TF Plan artifact
       run: |
-        mkdir -p ${{ matrix.path }}
-        zip -r ${{ matrix.path }}/tfplan.zip ./*
+        zip -r {{ matrix.path }}/tfplan.zip ./*
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
