@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  scann:
+  scan:
     name: Scan 
     runs-on: ubuntu-latest
     steps:
