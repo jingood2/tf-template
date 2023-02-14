@@ -141,4 +141,4 @@ jobs:
         #path: ${{ inputs.path }}
 
     - name: Decompress TF Plan artifact
-      run: unzip ${{ env.TF_KEY}}/tfplan.zip
+      run: unzip dev/tfplan.zip
