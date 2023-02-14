@@ -60,7 +60,7 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
     - name: Terraform Init 
-      run: terraform init -input=false
+      run: terraform init -input=false -backend-config="key=${{matrix.path}}"
 
     - name: Terraform Plan
       id: plan
@@ -72,7 +72,7 @@ jobs:
       run: exit 1
 
     - name: Compress TF Plan artifact
-      run: zip -r ${{ inputs.tf_key }}.zip ./*
+      run: zip -r ${{ matrix.path }}.zip ./*
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
