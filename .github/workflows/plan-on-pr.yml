@@ -119,7 +119,7 @@ jobs:
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
-        name: '${{ matrix.path }}'
+        name: ${{ matrix.path }}
         #path: '${{ matrix.path }}.zip'
         path: '${{ matrix.path}}/tfplan.zip'
         retention-days: 5
@@ -130,3 +130,12 @@ jobs:
     with:
       path: tfplan
       gh_environment: dev
+  
+    - name: Download Artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: dev
+        #path: ${{ inputs.path }}
+
+    - name: Decompress TF Plan artifact
+      run: unzip ${{ env.TF_KEY}}/tfplan.zip
