@@ -58,6 +58,8 @@ jobs:
       matrix:
         path:
           - dev
+          - stage
+          - prod
 
     permissions: write-all
 
