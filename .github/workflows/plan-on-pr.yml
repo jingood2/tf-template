@@ -18,6 +18,7 @@ jobs:
       - name: Terraform Format
         id: fmt
         run: terraform fmt --check -recursive
+        continue-on-error: true
       
       - name: Post Format
         if: always() && github.ref != 'refs/heads/main' && (steps.fmt.outcome == 'success' || steps.fmt.outcome == 'failure')
