@@ -143,6 +143,7 @@ jobs:
     with:
       path: tfplan
       gh_environment: dev
+      terraform_version: 1.0.9
   
   apply-stage-plan:
     needs: apply-dev-plan
@@ -150,6 +151,7 @@ jobs:
     with:
       path: tfplan
       gh_environment: stage
+      terraform_version: 1.0.9
   
     #steps:
     #- name: Download Artifact
