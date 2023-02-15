@@ -99,7 +99,7 @@ jobs:
     - name: Terraform Plan
       id: plan
       #run: terraform plan --var-file=environments/${{matrix.path}}.auto.tfvars --out=plan.tfplan
-      run: terraform plan --var-file=environments/dev.auto.tfvars
+      run: terraform plan --var-file=environments/*.auto.tfvars
       continue-on-error: true
       env:
         TF_WORKSPACE: ${{matrix.path}}
