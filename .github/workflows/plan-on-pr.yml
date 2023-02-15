@@ -144,6 +144,13 @@ jobs:
       path: tfplan
       gh_environment: dev
   
+  apply-stage-plan:
+    needs: apply-dev-plan
+    uses: jingood2/tf-template/.github/workflows/apply-tf-plan.yml@main
+    with:
+      path: tfplan
+      gh_environment: stage
+  
     #steps:
     #- name: Download Artifact
     #  uses: actions/download-artifact@v2
