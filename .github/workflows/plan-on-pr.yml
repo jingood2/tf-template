@@ -84,7 +84,9 @@ jobs:
     
     - name: Terraform Init 
       id: init
-      run: terraform init -input=false
+      run: |
+        export TF_WORKSPACE=${{matrix.path}}
+        terraform init -input=false
     
     - name: Post Init
       if: always() && github.ref != 'refs/heads/main' && (steps.init.outcome == 'success' || steps.init.outcome == 'failure')
