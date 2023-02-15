@@ -9,14 +9,14 @@ terraform {
     }
   }
 
-  backend "remote" {
-    hostname = "app.terraform.io"
-    organization = "jingood2"
+  #backend "remote" {
+  #  hostname = "app.terraform.io"
+  #  organization = "jingood2"
 
-    workspaces {
-      prefix = "helloworld-"
-    }
-  } 
+  #  workspaces {
+  #    prefix = "helloworld-"
+  #  }
+  #} 
 }
 
 # Provider Block
