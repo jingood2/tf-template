@@ -16,7 +16,15 @@ on:
         description: 'Specifies the GitHub deployment environment.'
         required: true
         type: string
-    #secrets:
+      enable_workspace:
+        description: 'Enable Terraform workspace.'
+        required: false
+        type: string
+        default: false
+    secrets:
+      terraform_api_token:
+        description: 'Specifies the TF_API_TOKEN.'
+        required: true
     #  aws_client_id:
     #    description: 'Specifies the AWS_CLIENT_ID.'
     #    required: true
@@ -33,6 +41,7 @@ jobs:
         shell: bash
     env:
       TF_KEY: ${{ inputs.gh_environment }}
+      TF_WORKSPACE: ${{ inputs.gh_environment }}
 
     steps:
       - name: Download Artifact
@@ -44,15 +53,22 @@ jobs:
       - name: Decompress TF Plan artifact
         run: unzip tfplan.zip
         #unzip tfplan/${{ inputs.gh_environment }}.zip
+      
+      - name: Set Workspace
+        id: set_workspace
+        if: ${{ inputs.enable_workspace == 'true'}}
+        run: terraform workspace new ${{env.TF_WORKSPACE}}
 
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v1.3.2
+        uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: ${{ inputs.tf_version }}
+          cli_config_credentials_token: ${{ secrets.terraform_api_token }}
+
 
       - name: Terraform Init
         id: init
         run: terraform init
 
       - name: Terraform Apply
-        run: terraform apply plan.tfplan
+        run: terraform apply plan.tfplan -auto-approve
