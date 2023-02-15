@@ -46,7 +46,7 @@ jobs:
         #unzip tfplan/${{ inputs.gh_environment }}.zip
 
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v1.3.2
+        uses: hashicorp/setup-terraform@v2.0.3
         with:
           terraform_version: ${{ inputs.tf_version }}
 
