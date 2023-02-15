@@ -84,9 +84,9 @@ jobs:
     
     - name: Terraform Init 
       id: init
-      run: |
-        export TF_WORKSPACE=${{matrix.path}}
-        terraform init -input=false
+      run: terraform init -input=false
+      env:
+        TF_WORKSPACE: ${{matrix.path}}
     
     - name: Post Init
       if: always() && github.ref != 'refs/heads/main' && (steps.init.outcome == 'success' || steps.init.outcome == 'failure')
@@ -100,6 +100,9 @@ jobs:
       id: plan
       run: terraform plan --var-file=environments/${{matrix.path}}.auto.tfvars --out=plan.tfplan
       continue-on-error: true
+      env:
+        TF_WORKSPACE: ${{matrix.path}}
+
     
     - name: Post Plan
       uses: robburger/terraform-pr-commenter@v1
