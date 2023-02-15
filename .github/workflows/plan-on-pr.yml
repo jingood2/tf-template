@@ -84,7 +84,7 @@ jobs:
     
     - name: Set Workspace
       id: set_workspace
-      if: ${{ inputs.enable_workspace == 'true'}}
+      #if: ${{ inputs.enable_workspace == 'true'}}
       run: terraform workspace new ${{ matrix.path }}
 
     - name: Terraform Init 
