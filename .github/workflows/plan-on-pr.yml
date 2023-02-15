@@ -137,7 +137,8 @@ jobs:
   #  - name: Decompress TF Plan artifact
   #    run: unzip tfplan.zip
 
-  apply-dev-plan:
+  dev:
+    name: apply-dev
     needs: terraform-plan
     uses: jingood2/tf-template/.github/workflows/apply-tf-plan.yml@main
     with:
@@ -145,8 +146,18 @@ jobs:
       gh_environment: dev
       tf_version: 1.0.9
   
-  apply-stage-plan:
-    needs: apply-dev-plan
+  stage:
+    name: apply-stage
+    needs: apply-dev
+    uses: jingood2/tf-template/.github/workflows/apply-tf-plan.yml@main
+    with:
+      path: tfplan
+      gh_environment: stage
+      tf_version: 1.0.9
+  
+  prod:
+    name: apply-prod
+    needs: apply-stage
     uses: jingood2/tf-template/.github/workflows/apply-tf-plan.yml@main
     with:
       path: tfplan
