@@ -152,7 +152,7 @@ jobs:
   
   stage:
     name: apply-stage
-    needs: apply-dev
+    needs: dev
     uses: jingood2/tf-template/.github/workflows/apply-tf-plan.yml@main
     with:
       path: tfplan
@@ -163,7 +163,7 @@ jobs:
   
   prod:
     name: apply-prod
-    needs: apply-stage
+    needs: stage
     uses: jingood2/tf-template/.github/workflows/apply-tf-plan.yml@main
     with:
       path: tfplan
