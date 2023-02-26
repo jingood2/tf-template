@@ -3,7 +3,7 @@ name: Release
 on:
   pull_request:
     types:
-      - "closed"
+      - closed
 
 permissions: write-all
 
@@ -22,3 +22,4 @@ jobs:
           config-name: release-drafter-config.yml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
