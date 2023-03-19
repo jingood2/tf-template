@@ -7,9 +7,11 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 3.0"
     }
+    
+    backend "s3" {}
+
   }
 
-  backend "s3" {}
 
   #backend "remote" {
   #  hostname = "app.terraform.io"
